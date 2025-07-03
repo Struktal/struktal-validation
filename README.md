@@ -1,0 +1,1 @@
+# Struktal-Validation

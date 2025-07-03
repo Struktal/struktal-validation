@@ -1,0 +1,33 @@
+{
+    "name": "struktal/struktal-validation",
+    "description": "PHP library to validate user inputs for APIs or forms",
+    "keywords": [
+        "validation"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "autoload":{
+        "psr-4": {
+            "struktal\\validation\\": "src/",
+            "struktal\\validation\\validators\\": "src/validators/"
+        }
+    },
+    "require": {
+        "php": ">=8.2.0",
+        "ext-pdo": "*",
+        "struktal/struktal-orm": "~1.0.1"
+    },
+    "require-dev": {
+        "pestphp/pest": "~v3.8.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/pest"
+        ]
+    }
+}
