@@ -72,6 +72,18 @@ $datatypes = [
     [
         PHP_FLOAT_MIN,
         [ "integer", "float" ]
+    ],
+    [
+        [],
+        [ "array" ]
+    ],
+    [
+        [ "Hello", "World" ],
+        [ "array" ]
+    ],
+    [
+        [ "Hello", 123, 3.14 ],
+        [ "array" ]
     ]
 ];
 
@@ -97,5 +109,11 @@ dataset("isFloat", array_map(function(array $value) {
     return [
         $value[0],
         in_array("float", $value[1], true)
+    ];
+}, $datatypes));
+dataset("isArray", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("array", $value[1], true)
     ];
 }, $datatypes));

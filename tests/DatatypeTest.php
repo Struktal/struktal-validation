@@ -54,3 +54,16 @@ test("Float datatype validation", function(mixed $input, bool $passesValidation)
         expect(fn() => $validator->getValidatedValue($input))->toThrow(ValidationException::class);
     }
 })->with("isFloat");
+
+test("Array datatype validation", function(mixed $input, bool $passesValidation) {
+    $validator = ValidationBuilder::create()
+        ->array()
+        ->build();
+
+    if($passesValidation) {
+        expect($validator->getValidatedValue($input))->toEqual($input)
+            ->and(fn() => $validator->getValidatedValue($input))->not()->toThrow(ValidationException::class);
+    } else {
+        expect(fn() => $validator->getValidatedValue($input))->toThrow(ValidationException::class);
+    }
+})->with("isArray");
