@@ -13,7 +13,7 @@ class IsFloat extends GenericValidator implements ValidatorInterface {
     }
 
     public function getValidatedValue(mixed &$input): mixed {
-        if(!is_float($input)) {
+        if(!is_numeric($input)) {
             parent::failValidation();
         }
 
