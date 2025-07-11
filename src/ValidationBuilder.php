@@ -66,7 +66,7 @@ class ValidationBuilder {
         return $this;
     }
 
-    public function inDatabase(GenericObjectDAO $dao = null, array $additionalFilters = []): ValidationBuilder {
+    public function inDatabase(?GenericObjectDAO $dao = null, array $additionalFilters = []): ValidationBuilder {
         $this->validators[] = validators\IsInDatabase::create($dao, $additionalFilters);
         return $this;
     }
