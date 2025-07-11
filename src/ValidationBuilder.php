@@ -2,7 +2,9 @@
 
 namespace struktal\validation;
 
-use \struktal\ORM\GenericObjectDAO;
+use struktal\ORM\GenericObjectDAO;
+use struktal\validation\internals\GenericValidator;
+use struktal\validation\internals\Validator;
 
 class ValidationBuilder {
     private string $errorMessage = PHP_EOL;

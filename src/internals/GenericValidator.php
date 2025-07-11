@@ -1,6 +1,8 @@
 <?php
 
-namespace struktal\validation;
+namespace struktal\validation\internals;
+
+use struktal\validation\ValidationException;
 
 class GenericValidator {
     private string $errorMessage = PHP_EOL;

@@ -9,7 +9,8 @@
     "autoload":{
         "psr-4": {
             "struktal\\validation\\": "src/",
-            "struktal\\validation\\validators\\": "src/validators/"
+            "struktal\\validation\\validators\\": "src/validators/",
+            "struktal\\validation\\internals\\": "src/internals/"
         }
     },
     "require": {

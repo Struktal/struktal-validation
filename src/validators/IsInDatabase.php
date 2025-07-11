@@ -2,10 +2,10 @@
 
 namespace struktal\validation\validators;
 
-use \struktal\validation\GenericValidator;
-use \struktal\validation\ValidatorInterface;
-use \struktal\ORM\GenericObject;
-use \struktal\ORM\GenericObjectDAO;
+use struktal\ORM\GenericObject;
+use struktal\ORM\GenericObjectDAO;
+use struktal\validation\internals\GenericValidator;
+use struktal\validation\internals\ValidatorInterface;
 
 class IsInDatabase extends GenericValidator implements ValidatorInterface {
     private GenericObjectDAO $dao;

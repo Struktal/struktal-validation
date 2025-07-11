@@ -1,7 +1,8 @@
 <?php
 
-namespace struktal\validation;
+namespace struktal\validation\internals;
 
+use struktal\validation\ValidationException;
 use struktal\validation\validators\IsRequired;
 
 class Validator extends GenericValidator implements ValidatorInterface {

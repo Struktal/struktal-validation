@@ -2,9 +2,9 @@
 
 namespace struktal\validation\validators;
 
-use \struktal\validation\GenericValidator;
-use \struktal\validation\ValidatorInterface;
-use \struktal\validation\ValidationException;
+use struktal\validation\internals\GenericValidator;
+use struktal\validation\internals\ValidatorInterface;
+use struktal\validation\ValidationException;
 
 class HasProperties extends GenericValidator implements ValidatorInterface {
     private array $properties;

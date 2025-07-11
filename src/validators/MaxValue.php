@@ -2,8 +2,8 @@
 
 namespace struktal\validation\validators;
 
-use \struktal\validation\GenericValidator;
-use \struktal\validation\ValidatorInterface;
+use struktal\validation\internals\GenericValidator;
+use struktal\validation\internals\ValidatorInterface;
 
 class MaxValue extends GenericValidator implements ValidatorInterface {
     private int $maxValue;
