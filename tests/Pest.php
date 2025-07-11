@@ -117,3 +117,68 @@ dataset("isArray", array_map(function(array $value) {
         in_array("array", $value[1], true)
     ];
 }, $datatypes));
+
+$hasChildren = [
+    [
+        [
+            "name" => "John Doe"
+        ],
+        [ "requiredString", "optionalString", "additionalFields" ]
+    ],
+    [
+        [
+            "name" => 20
+        ],
+        []
+    ],
+    [
+        [
+            "age" => 21
+        ],
+        [ "optionalString" ]
+    ],
+    [
+        [
+            "name" => ""
+        ],
+        [ "optionalString", "additionalFields" ]
+    ],
+    [
+        [
+            "name" => "John Doe",
+            "age" => 20
+        ],
+        [ "requiredString", "optionalString", "additionalFields" ]
+    ],
+    [
+        [
+            "names" => [ "John", "Jane" ]
+        ],
+        [ "optionalString", "nestedArray" ]
+    ]
+];
+
+dataset("requiredString", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("requiredString", $value[1], true)
+    ];
+}, $hasChildren));
+dataset("optionalString", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("optionalString", $value[1], true)
+    ];
+}, $hasChildren));
+dataset("nestedArray", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("nestedArray", $value[1], true)
+    ];
+}, $hasChildren));
+dataset("additionalFields", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("additionalFields", $value[1], true)
+    ];
+}, $hasChildren));
