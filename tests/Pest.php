@@ -3,35 +3,35 @@
 $datatypes = [
     [
         "Hello, World!",
-        [ "string" ]
+        [ "string", "optionalString" ]
     ],
     [
         "",
-        [ "string" ]
+        [ "optionalString" ]
     ],
     [
         PHP_EOL,
-        [ "string" ]
+        [ "string", "optionalString" ]
     ],
     [
         "12345",
-        [ "string", "integer", "float" ]
+        [ "string", "optionalString", "integer", "float" ]
     ],
     [
         "3.1415926",
-        [ "string", "integer", "float" ]
+        [ "string", "optionalString", "integer", "float" ]
     ],
     [
         "mail@domain.com",
-        [ "string", "email" ]
+        [ "string", "optionalString", "email" ]
     ],
     [
         "dashed-mail@domain.com",
-        [ "string", "email" ]
+        [ "string", "optionalString", "email" ]
     ],
     [
         "dashed-mail@dashed-domain.com",
-        [ "string", "email" ]
+        [ "string", "optionalString", "email" ]
     ],
     [
         123,
@@ -39,7 +39,7 @@ $datatypes = [
     ],
     [
         0,
-        [ "integer", "float" ]
+        [ "optionalString", "integer", "float" ]
     ],
     [
         -123,
@@ -59,7 +59,7 @@ $datatypes = [
     ],
     [
         0.0,
-        [ "integer", "float" ]
+        [ "optionalString", "integer", "float" ]
     ],
     [
         -3.14,
@@ -75,7 +75,7 @@ $datatypes = [
     ],
     [
         [],
-        [ "array" ]
+        [ "optionalString", "array" ]
     ],
     [
         [ "Hello", "World" ],
@@ -91,6 +91,12 @@ dataset("isString", array_map(function(array $value) {
     return [
         $value[0],
         in_array("string", $value[1], true)
+    ];
+}, $datatypes));
+dataset("isOptionalString", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("optionalString", $value[1], true)
     ];
 }, $datatypes));
 dataset("isEmail", array_map(function(array $value) {
@@ -141,7 +147,7 @@ $hasChildren = [
         [
             "name" => ""
         ],
-        [ "optionalString", "additionalFields" ]
+        [ "optionalString" ]
     ],
     [
         [
@@ -154,7 +160,33 @@ $hasChildren = [
         [
             "names" => [ "John", "Jane" ]
         ],
+        [ "optionalString" ]
+    ],
+    [
+        [
+            "details" => [
+                "name" => "John Doe",
+                "age" => 30
+            ]
+        ],
         [ "optionalString", "nestedArray" ]
+    ],
+    [
+        [
+            "details" => [
+                "age" => 30
+            ]
+        ],
+        [ "optionalString" ]
+    ],
+    [
+        [
+            "details" => [
+                "name" => "",
+                "age" => 30
+            ]
+        ],
+        [ "optionalString" ]
     ]
 ];
 

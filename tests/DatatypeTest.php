@@ -16,6 +16,19 @@ test("String datatype validation", function(mixed $input, bool $passesValidation
     }
 })->with("isString");
 
+test("Optional string datatype validation", function(mixed $input, bool $passesValidation) {
+    $validator = ValidationBuilder::create()
+        ->string(false)
+        ->build();
+
+    if($passesValidation) {
+        expect($validator->getValidatedValue($input))->toBeIn([$input, null])
+            ->and(fn() => $validator->getValidatedValue($input))->not()->toThrow(ValidationException::class);
+    } else {
+        expect(fn() => $validator->getValidatedValue($input))->toThrow(ValidationException::class);
+    }
+})->with("isOptionalString");
+
 test("Email datatype validation", function(mixed $input, bool $passesValidation) {
     $validator = ValidationBuilder::create()
         ->email()

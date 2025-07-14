@@ -117,7 +117,10 @@ class ValidationBuilder {
         return $this;
     }
 
-    public function array(): ValidationBuilder {
+    public function array(bool $required = true): ValidationBuilder {
+        if($required) {
+            $this->validators[] = validators\IsRequired::create();
+        }
         $this->validators[] = validators\IsArray::create();
         return $this;
     }
