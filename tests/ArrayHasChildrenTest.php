@@ -8,8 +8,6 @@ test("Required string child", function(mixed $input, bool $passesValidation) {
         ->array()
         ->children([
             "name" => ValidationBuilder::create()
-                ->required()
-                ->nullOnEmpty()
                 ->string()
                 ->build()
         ])
@@ -28,8 +26,7 @@ test("Optional string child", function(mixed $input, bool $passesValidation) {
         ->array()
         ->children([
             "name" => ValidationBuilder::create()
-                ->nullOnEmpty()
-                ->string()
+                ->string(false)
                 ->build()
         ])
         ->build();
@@ -51,11 +48,19 @@ test("Array child", function(mixed $input, bool $passesValidation) {
     $validator = ValidationBuilder::create()
         ->array()
         ->children([
-            "names" => ValidationBuilder::create()
-                ->required()
+            "details" => ValidationBuilder::create()
                 ->array()
+                ->children([
+                    "name" => ValidationBuilder::create()
+                        ->string()
+                        ->build(),
+                    "age" => ValidationBuilder::create()
+                        ->int()
+                        ->build()
+                ])
                 ->build()
         ])
+        ->required()
         ->build();
 
     if($passesValidation) {
@@ -71,7 +76,6 @@ test("Array with additional fields", function(mixed $input, bool $passesValidati
         ->array()
         ->children([
             "name" => ValidationBuilder::create()
-                ->required()
                 ->string()
                 ->build()
         ], true)

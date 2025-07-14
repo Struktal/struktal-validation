@@ -7,10 +7,10 @@ use struktal\validation\internals\ValidatorInterface;
 use struktal\validation\ValidationException;
 
 class HasChildren extends GenericValidator implements ValidatorInterface {
-    private array $children;
+    private array|ValidatorInterface $children;
     private bool $allowAdditionalFields;
 
-    public function __construct(array $children = [], bool $allowAdditionalFields = false) {
+    public function __construct(array|ValidatorInterface $children = [], bool $allowAdditionalFields = false) {
         $this->children = $children;
         $this->allowAdditionalFields = $allowAdditionalFields;
     }
@@ -21,6 +21,8 @@ class HasChildren extends GenericValidator implements ValidatorInterface {
 
     public function getValidatedValue(mixed &$input): mixed {
         $output = [];
+
+        var_dump("start: ", $input);
 
         /**
          * @var string $key
@@ -47,6 +49,8 @@ class HasChildren extends GenericValidator implements ValidatorInterface {
                 $output[$key] = $value;
             }
         }
+
+        var_dump("end: ", $output);
 
         return $output;
     }
