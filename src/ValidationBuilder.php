@@ -3,8 +3,10 @@
 namespace struktal\validation;
 
 use struktal\ORM\GenericObjectDAO;
+use struktal\validation\internals\DataTypeValidatorInterface;
 use struktal\validation\internals\GenericValidator;
 use struktal\validation\internals\Validator;
+use struktal\validation\validators\IsRequired;
 
 class ValidationBuilder {
     private string $errorMessage = PHP_EOL;
@@ -24,9 +26,19 @@ class ValidationBuilder {
             return $this;
         }
 
+        // Set the error message for the last validator in the chain
         $lastChild = end($this->validators);
         if($lastChild instanceof GenericValidator) {
             $lastChild->setErrorMessage($message);
+        }
+
+        // If the last validator is a DataTypeValidatorInterface, use the same error message for potential IsRequired validators
+        if($lastChild instanceof DataTypeValidatorInterface) {
+            foreach($this->validators as $validator) {
+                if($validator instanceof IsRequired) {
+                    $validator->setErrorMessage($message);
+                }
+            }
         }
 
         return $this;
@@ -48,17 +60,29 @@ class ValidationBuilder {
         return $this;
     }
 
-    public function string(): ValidationBuilder {
+    public function string(bool $required = true, bool $nullOnEmpty = true): ValidationBuilder {
+        if($nullOnEmpty) {
+            $this->validators[] = validators\NullOnEmpty::create();
+        }
+        if($required) {
+            $this->validators[] = validators\IsRequired::create();
+        }
         $this->validators[] = validators\IsString::create();
         return $this;
     }
 
-    public function int(): ValidationBuilder {
+    public function int(bool $required = true): ValidationBuilder {
+        if($required) {
+            $this->validators[] = validators\IsRequired::create();
+        }
         $this->validators[] = validators\IsInteger::create();
         return $this;
     }
 
-    public function float(): ValidationBuilder {
+    public function float(bool $required = true): ValidationBuilder {
+        if($required) {
+            $this->validators[] = validators\IsRequired::create();
+        }
         $this->validators[] = validators\IsFloat::create();
         return $this;
     }

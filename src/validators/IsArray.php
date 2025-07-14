@@ -4,8 +4,9 @@ namespace struktal\validation\validators;
 
 use struktal\validation\internals\GenericValidator;
 use struktal\validation\internals\ValidatorInterface;
+use struktal\validation\internals\DataTypeValidatorInterface;
 
-class IsArray extends GenericValidator implements ValidatorInterface {
+class IsArray extends GenericValidator implements ValidatorInterface, DataTypeValidatorInterface {
     public function __construct() {}
 
     public static function create(): ValidatorInterface {
