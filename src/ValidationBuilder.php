@@ -50,6 +50,16 @@ class ValidationBuilder {
         return $validator;
     }
 
+    public function required(): ValidationBuilder {
+        $this->validators[] = validators\IsRequired::create();
+        return $this;
+    }
+
+    public function nullOnEmpty(): ValidationBuilder {
+        $this->validators[] = validators\NullOnEmpty::create();
+        return $this;
+    }
+
     public function string(bool $required = true, bool $nullOnEmpty = true): ValidationBuilder {
         if($nullOnEmpty) {
             $this->validators[] = validators\NullOnEmpty::create();
