@@ -60,7 +60,6 @@ test("Array child", function(mixed $input, bool $passesValidation) {
                 ])
                 ->build()
         ])
-        ->required()
         ->build();
 
     if($passesValidation) {
