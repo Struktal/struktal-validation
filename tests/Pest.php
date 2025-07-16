@@ -214,3 +214,67 @@ dataset("additionalFields", array_map(function(array $value) {
         in_array("additionalFields", $value[1], true)
     ];
 }, $hasChildren));
+
+$valueRestrictions = [
+    [
+        10,
+        [ "maxVal10", "minVal0", "maxVal10MinVal0" ]
+    ],
+    [
+        20,
+        [ "minVal0" ]
+    ],
+    [
+        -10,
+        [ "maxVal10" ]
+    ],
+    [
+        "Hello",
+        [ "maxLen10", "minLen5", "maxLen10MinLen5" ]
+    ],
+    [
+        "Hello, World!",
+        [ "minLen5" ]
+    ],
+    [
+        "Hi",
+        [ "maxLen10" ]
+    ]
+];
+
+dataset("maxVal10", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("maxVal10", $value[1], true)
+    ];
+}, $valueRestrictions));
+dataset("minVal0", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("minVal0", $value[1], true)
+    ];
+}, $valueRestrictions));
+dataset("maxVal10MinVal0", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("maxVal10MinVal0", $value[1], true)
+    ];
+}, $valueRestrictions));
+dataset("maxLen10", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("maxLen10", $value[1], true)
+    ];
+}, $valueRestrictions));
+dataset("minLen5", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("minLen5", $value[1], true)
+    ];
+}, $valueRestrictions));
+dataset("maxLen10MinLen5", array_map(function(array $value) {
+    return [
+        $value[0],
+        in_array("maxLen10MinLen5", $value[1], true)
+    ];
+}, $valueRestrictions));
