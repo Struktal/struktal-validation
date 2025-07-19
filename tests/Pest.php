@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . "/ValidationErrorMessages.php");
+
 $datatypes = [
     [
         "Hello, World!",
@@ -278,3 +280,202 @@ dataset("maxLen10MinLen5", array_map(function(array $value) {
         in_array("maxLen10MinLen5", $value[1], true)
     ];
 }, $valueRestrictions));
+
+$errorMessagesTests = [
+    [
+        "Hello",
+        [
+            "noEmail" => ValidationErrorMessages::INVALID_EMAIL->name,
+            "noInteger" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noFloat" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+            "noIntWithMaxVal10" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noIntWithMinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name
+        ]
+    ],
+    [
+        "Hello, World!",
+        [
+            "noEmail" => ValidationErrorMessages::INVALID_EMAIL->name,
+            "noInteger" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noFloat" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+            "noIntWithMaxVal10" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noIntWithMinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noStringWithMaxLen10" => ValidationErrorMessages::MAX_LEN_EXCEEDED->name,
+            "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::MAX_LEN_EXCEEDED->name
+        ]
+    ],
+    [
+        "mail@domain.com",
+        [
+            "noInteger" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noFloat" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+            "noIntWithMaxVal10" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noIntWithMinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noStringWithMaxLen10" => ValidationErrorMessages::MAX_LEN_EXCEEDED->name,
+            "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::MAX_LEN_EXCEEDED->name
+        ]
+    ],
+    [
+        5,
+        [
+            "noString" => ValidationErrorMessages::INVALID_STRING->name,
+            "noEmail" => ValidationErrorMessages::INVALID_EMAIL->name,
+//            "noFloat" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+//            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
+//            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+//            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMinLen5" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::INVALID_STRING->name,
+        ]
+    ],
+    [
+        42,
+        [
+            "noString" => ValidationErrorMessages::INVALID_STRING->name,
+            "noEmail" => ValidationErrorMessages::INVALID_EMAIL->name,
+//            "noFloat" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+            "noIntWithMaxVal10" => ValidationErrorMessages::MAX_VAL_EXCEEDED->name,
+            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::MAX_VAL_EXCEEDED->name,
+//            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
+//            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+//            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMinLen5" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::INVALID_STRING->name
+        ]
+    ],
+    [
+        -5,
+        [
+            "noString" => ValidationErrorMessages::INVALID_STRING->name,
+            "noEmail" => ValidationErrorMessages::INVALID_EMAIL->name,
+//            "noFloat" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+            "noIntWithMinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
+            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
+//            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
+//            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+//            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMinLen5" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::INVALID_STRING->name
+        ]
+    ],
+    [
+        pi(),
+        [
+            "noString" => ValidationErrorMessages::INVALID_STRING->name,
+            "noEmail" => ValidationErrorMessages::INVALID_EMAIL->name,
+//            "noInteger" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+//            "noIntWithMaxVal10" => ValidationErrorMessages::INVALID_INTEGER->name,
+//            "noIntWithMinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+//            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMinLen5" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::INVALID_STRING->name
+        ]
+    ],
+    [
+        -pi(),
+        [
+            "noString" => ValidationErrorMessages::INVALID_STRING->name,
+            "noEmail" => ValidationErrorMessages::INVALID_EMAIL->name,
+//            "noInteger" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
+//            "noIntWithMaxVal10" => ValidationErrorMessages::INVALID_INTEGER->name,
+//            "noIntWithMinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+//            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noFloatWithMinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
+            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
+            "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMinLen5" => ValidationErrorMessages::INVALID_STRING->name,
+            "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::INVALID_STRING->name
+        ]
+    ]
+];
+
+dataset("emNoString", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noString"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoEmail", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noEmail"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoInteger", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noInteger"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoFloat", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noFloat"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoArray", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noArray"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emnoIntWithMaxVal10", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noIntWithMaxVal10"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emnoIntWithMinVal0", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noIntWithMinVal0"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emnoIntWithMaxVal10MinVal0", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noIntWithMaxVal10MinVal0"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoStringWithMaxLen10", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noStringWithMaxLen10"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoStringWithMinLen5", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noStringWithMinLen5"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoStringWithMaxLen10MinLen5", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noStringWithMaxLen10MinLen5"] ?? null
+    ];
+}, $errorMessagesTests));
