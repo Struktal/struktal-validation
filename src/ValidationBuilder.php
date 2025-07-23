@@ -12,10 +12,6 @@ class ValidationBuilder {
     private string $errorMessage = PHP_EOL;
     private array $validators = [];
 
-    private function __construct() {
-        // Private constructor to enforce the use of the static create method
-    }
-
     public static function create(): ValidationBuilder {
         return new self();
     }
