@@ -22,8 +22,6 @@ class HasChildren extends GenericValidator implements ValidatorInterface {
     public function getValidatedValue(mixed &$input): mixed {
         $output = [];
 
-        var_dump("start: ", $input);
-
         /**
          * @var string $key
          * @var ValidatorInterface $validator
@@ -49,8 +47,6 @@ class HasChildren extends GenericValidator implements ValidatorInterface {
                 $output[$key] = $value;
             }
         }
-
-        var_dump("end: ", $output);
 
         return $output;
     }
