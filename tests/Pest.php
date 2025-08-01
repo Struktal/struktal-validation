@@ -354,9 +354,9 @@ $errorMessagesTests = [
             "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
             "noIntWithMaxVal10" => ValidationErrorMessages::MAX_VAL_EXCEEDED->name,
             "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::MAX_VAL_EXCEEDED->name,
-//            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMaxVal10" => ValidationErrorMessages::MAX_VAL_EXCEEDED->name,
 //            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
-//            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::MAX_VAL_EXCEEDED->name,
             "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
             "noStringWithMinLen5" => ValidationErrorMessages::INVALID_STRING->name,
             "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::INVALID_STRING->name
@@ -372,8 +372,8 @@ $errorMessagesTests = [
             "noIntWithMinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
             "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
 //            "noFloatWithMaxVal10" => ValidationErrorMessages::INVALID_FLOAT->name,
-//            "noFloatWithMinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
-//            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_FLOAT->name,
+            "noFloatWithMinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
+            "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
             "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
             "noStringWithMinLen5" => ValidationErrorMessages::INVALID_STRING->name,
             "noStringWithMaxLen10MinLen5" => ValidationErrorMessages::INVALID_STRING->name
@@ -402,8 +402,8 @@ $errorMessagesTests = [
 //            "noInteger" => ValidationErrorMessages::INVALID_INTEGER->name,
             "noArray" => ValidationErrorMessages::INVALID_ARRAY->name,
 //            "noIntWithMaxVal10" => ValidationErrorMessages::INVALID_INTEGER->name,
-//            "noIntWithMinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
-//            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::INVALID_INTEGER->name,
+            "noIntWithMinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
+            "noIntWithMaxVal10MinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
             "noFloatWithMinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
             "noFloatWithMaxVal10MinVal0" => ValidationErrorMessages::MIN_VAL_NOT_REACHED->name,
             "noStringWithMaxLen10" => ValidationErrorMessages::INVALID_STRING->name,
@@ -443,22 +443,40 @@ dataset("emNoArray", array_map(function(array $value) {
         $value[1]["noArray"] ?? null
     ];
 }, $errorMessagesTests));
-dataset("emnoIntWithMaxVal10", array_map(function(array $value) {
+dataset("emNoIntWithMaxVal10", array_map(function(array $value) {
     return [
         $value[0],
         $value[1]["noIntWithMaxVal10"] ?? null
     ];
 }, $errorMessagesTests));
-dataset("emnoIntWithMinVal0", array_map(function(array $value) {
+dataset("emNoIntWithMinVal0", array_map(function(array $value) {
     return [
         $value[0],
         $value[1]["noIntWithMinVal0"] ?? null
     ];
 }, $errorMessagesTests));
-dataset("emnoIntWithMaxVal10MinVal0", array_map(function(array $value) {
+dataset("emNoIntWithMaxVal10MinVal0", array_map(function(array $value) {
     return [
         $value[0],
         $value[1]["noIntWithMaxVal10MinVal0"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoFloatWithMaxVal10", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noFloatWithMaxVal10"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoFloatWithMinVal0", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noFloatWithMinVal0"] ?? null
+    ];
+}, $errorMessagesTests));
+dataset("emNoFloatWithMaxVal10MinVal0", array_map(function(array $value) {
+    return [
+        $value[0],
+        $value[1]["noFloatWithMaxVal10MinVal0"] ?? null
     ];
 }, $errorMessagesTests));
 dataset("emNoStringWithMaxLen10", array_map(function(array $value) {
