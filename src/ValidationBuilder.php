@@ -2,7 +2,7 @@
 
 namespace struktal\validation;
 
-use struktal\ORM\GenericObjectDAO;
+use struktal\ORM\GenericEntityDAO;
 use struktal\validation\internals\DataTypeValidatorInterface;
 use struktal\validation\internals\GenericValidator;
 use struktal\validation\internals\Validator;
@@ -88,7 +88,7 @@ class ValidationBuilder {
         return $this;
     }
 
-    public function inDatabase(?GenericObjectDAO $dao = null, array $additionalFilters = []): ValidationBuilder {
+    public function inDatabase(?GenericEntityDAO $dao = null, array $additionalFilters = []): ValidationBuilder {
         $this->validators[] = validators\IsInDatabase::create($dao, $additionalFilters);
         return $this;
     }

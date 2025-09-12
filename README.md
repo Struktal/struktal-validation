@@ -86,7 +86,7 @@ try {
 
 If you use [Struktal/struktal-orm](https://github.com/Struktal/struktal-orm), you can also check whether an object exists in the database.
 Use the `inDatabase()` method to validate that the user has provided a valid object ID.
-The method takes a `GenericObjectDAO` object, as well as an optional array for additional filter options as parameters.
+The method takes a `GenericEntityDAO` object, as well as an optional array for additional filter options as parameters.
 
 ## Dependencies
 
