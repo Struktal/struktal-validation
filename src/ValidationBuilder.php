@@ -46,6 +46,18 @@ class ValidationBuilder {
         return $validator;
     }
 
+    public function validate(mixed $data, callable $exceptionHandler): mixed {
+        $validator = $this->build();
+
+        try {
+            return $validator->getValidatedValue($data);
+        } catch(ValidationException $e) {
+            $exceptionHandler($e);
+        }
+
+        return null;
+    }
+
     public function required(): ValidationBuilder {
         $this->validators[] = validators\IsRequired::create();
         return $this;
