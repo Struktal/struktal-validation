@@ -12,7 +12,7 @@ class ValidationBuilder {
     private string $errorMessage = PHP_EOL;
     private array $validators = [];
 
-    public static function create(): ValidationBuilder {
+    public function create(): ValidationBuilder {
         return new self();
     }
 

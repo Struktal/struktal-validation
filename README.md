@@ -23,7 +23,7 @@ use struktal\validation\ValidationException;
 $userInput = $_POST["input"];
 
 // Create a validation builder instance and define your validation rules
-$validator = ValidationBuilder::create()
+$validator = (new ValidationBuilder())
     ->withErrorMessage("Input is missing")
     ->string()
     ->withErrorMessage("Input must be a string")
@@ -54,15 +54,15 @@ use struktal\validation\ValidationException;
 
 $userInput = $_POST;
 
-$validator = ValidationBuilder::create()
+$validator = (new ValidationBuilder())
     ->withErrorMessage("No POST data provided")
     ->array()
     ->children([
-        "input" => ValidationBuilder::create()
+        "input" => (new ValidationBuilder())
             ->withErrorMessage("Input is missing")
             ->string()
             ->build(), // More rules could apply, also with explicit error messages
-        "moreInput" => ValidationBuilder::create()
+        "moreInput" => (new ValidationBuilder())
             ->withErrorMessage("More input is missing")
             ->int()
             ->minValue(0)
