@@ -4,10 +4,10 @@ use \struktal\validation\ValidationBuilder;
 use \struktal\validation\ValidationException;
 
 test("Required string child", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->array()
         ->children([
-            "name" => ValidationBuilder::create()
+            "name" => (new ValidationBuilder())
                 ->string()
                 ->build()
         ])
@@ -22,10 +22,10 @@ test("Required string child", function(mixed $input, bool $passesValidation) {
 })->with("requiredString");
 
 test("Optional string child", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->array()
         ->children([
-            "name" => ValidationBuilder::create()
+            "name" => (new ValidationBuilder())
                 ->string(false)
                 ->build()
         ])
@@ -45,16 +45,16 @@ test("Optional string child", function(mixed $input, bool $passesValidation) {
 })->with("optionalString");
 
 test("Array child", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->array()
         ->children([
-            "details" => ValidationBuilder::create()
+            "details" => (new ValidationBuilder())
                 ->array()
                 ->children([
-                    "name" => ValidationBuilder::create()
+                    "name" => (new ValidationBuilder())
                         ->string()
                         ->build(),
-                    "age" => ValidationBuilder::create()
+                    "age" => (new ValidationBuilder())
                         ->int()
                         ->build()
                 ])
@@ -71,10 +71,10 @@ test("Array child", function(mixed $input, bool $passesValidation) {
 })->with("nestedArray");
 
 test("Array with additional fields", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->array()
         ->children([
-            "name" => ValidationBuilder::create()
+            "name" => (new ValidationBuilder())
                 ->string()
                 ->build()
         ], true)

@@ -4,7 +4,7 @@ use \struktal\validation\ValidationBuilder;
 use \struktal\validation\ValidationException;
 
 test("String datatype validation", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->build();
 
@@ -17,7 +17,7 @@ test("String datatype validation", function(mixed $input, bool $passesValidation
 })->with("isString");
 
 test("Optional string datatype validation", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string(false)
         ->build();
 
@@ -30,7 +30,7 @@ test("Optional string datatype validation", function(mixed $input, bool $passesV
 })->with("isOptionalString");
 
 test("Email datatype validation", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->email()
         ->build();
 
@@ -43,7 +43,7 @@ test("Email datatype validation", function(mixed $input, bool $passesValidation)
 })->with("isEmail");
 
 test("Integer datatype validation", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->build();
 
@@ -56,7 +56,7 @@ test("Integer datatype validation", function(mixed $input, bool $passesValidatio
 })->with("isInteger");
 
 test("Float datatype validation", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->float()
         ->build();
 
@@ -69,7 +69,7 @@ test("Float datatype validation", function(mixed $input, bool $passesValidation)
 })->with("isFloat");
 
 test("Array datatype validation", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->array()
         ->build();
 

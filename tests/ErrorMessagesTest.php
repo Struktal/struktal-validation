@@ -6,7 +6,7 @@ use \struktal\validation\ValidationBuilder;
 use \struktal\validation\ValidationException;
 
 test("No string", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->withErrorMessage(ValidationerrorMessages::INVALID_STRING->name)
         ->build();
@@ -24,7 +24,7 @@ test("No string", function(mixed $input, ?string $errorMessage) {
 })->with("emNoString");
 
 test("No integer", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->withErrorMessage(ValidationerrorMessages::INVALID_INTEGER->name)
         ->build();
@@ -42,7 +42,7 @@ test("No integer", function(mixed $input, ?string $errorMessage) {
 })->with("emNoInteger");
 
 test("No float", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->float()
         ->withErrorMessage(ValidationerrorMessages::INVALID_FLOAT->name)
         ->build();
@@ -60,7 +60,7 @@ test("No float", function(mixed $input, ?string $errorMessage) {
 })->with("emNoFloat");
 
 test("No array", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->array()
         ->withErrorMessage(ValidationerrorMessages::INVALID_ARRAY->name)
         ->build();
@@ -78,7 +78,7 @@ test("No array", function(mixed $input, ?string $errorMessage) {
 })->with("emNoArray");
 
 test("No integer with max value 10", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->withErrorMessage(ValidationErrorMessages::INVALID_INTEGER->name)
         ->maxValue(10)
@@ -98,7 +98,7 @@ test("No integer with max value 10", function(mixed $input, ?string $errorMessag
 })->with("emNoIntWithMaxVal10");
 
 test("No integer with min value 0", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->withErrorMessage(ValidationErrorMessages::INVALID_INTEGER->name)
         ->minValue(0)
@@ -118,7 +118,7 @@ test("No integer with min value 0", function(mixed $input, ?string $errorMessage
 })->with("emNoIntWithMinVal0");
 
 test("No integer with max value 10 and min value 0", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->withErrorMessage(ValidationErrorMessages::INVALID_INTEGER->name)
         ->maxValue(10)
@@ -140,7 +140,7 @@ test("No integer with max value 10 and min value 0", function(mixed $input, ?str
 })->with("emNoIntWithMaxVal10MinVal0");
 
 test("No float with max value 10", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->float()
         ->withErrorMessage(ValidationErrorMessages::INVALID_FLOAT->name)
         ->maxValue(10)
@@ -160,7 +160,7 @@ test("No float with max value 10", function(mixed $input, ?string $errorMessage)
 })->with("emNoFloatWithMaxVal10");
 
 test("No float with min value 0", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->float()
         ->withErrorMessage(ValidationErrorMessages::INVALID_FLOAT->name)
         ->minValue(0)
@@ -180,7 +180,7 @@ test("No float with min value 0", function(mixed $input, ?string $errorMessage) 
 })->with("emNoFloatWithMinVal0");
 
 test("No float with max value 10 and min value 0", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->float()
         ->withErrorMessage(ValidationErrorMessages::INVALID_FLOAT->name)
         ->maxValue(10)
@@ -202,7 +202,7 @@ test("No float with max value 10 and min value 0", function(mixed $input, ?strin
 })->with("emNoFloatWithMaxVal10MinVal0");
 
 test("No string with max length 10", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->withErrorMessage(ValidationErrorMessages::INVALID_STRING->name)
         ->maxLength(10)
@@ -222,7 +222,7 @@ test("No string with max length 10", function(mixed $input, ?string $errorMessag
 })->with("emNoStringWithMaxLen10");
 
 test("No string with min length 5", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->withErrorMessage(ValidationErrorMessages::INVALID_STRING->name)
         ->minLength(5)
@@ -242,7 +242,7 @@ test("No string with min length 5", function(mixed $input, ?string $errorMessage
 })->with("emNoStringWithMinLen5");
 
 test("No string with max length 10 and min length 5", function(mixed $input, ?string $errorMessage) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->withErrorMessage(ValidationErrorMessages::INVALID_STRING->name)
         ->maxLength(10)

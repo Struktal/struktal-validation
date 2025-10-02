@@ -4,7 +4,7 @@ use \struktal\validation\ValidationBuilder;
 use \struktal\validation\ValidationException;
 
 test("Max value 10", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->maxValue(10)
         ->build();
@@ -18,7 +18,7 @@ test("Max value 10", function(mixed $input, bool $passesValidation) {
 })->with("maxVal10");
 
 test("Min value 0", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->minValue(0)
         ->build();
@@ -32,7 +32,7 @@ test("Min value 0", function(mixed $input, bool $passesValidation) {
 })->with("minVal0");
 
 test("Max value 10 and min value 0", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->int()
         ->maxValue(10)
         ->minValue(0)
@@ -47,7 +47,7 @@ test("Max value 10 and min value 0", function(mixed $input, bool $passesValidati
 })->with("maxVal10MinVal0");
 
 test("Max length 10", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->maxLength(10)
         ->build();
@@ -61,7 +61,7 @@ test("Max length 10", function(mixed $input, bool $passesValidation) {
 })->with("maxLen10");
 
 test("Min length 5", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->minLength(5)
         ->build();
@@ -75,7 +75,7 @@ test("Min length 5", function(mixed $input, bool $passesValidation) {
 })->with("minLen5");
 
 test("Max length 10 and min length 5", function(mixed $input, bool $passesValidation) {
-    $validator = ValidationBuilder::create()
+    $validator = (new ValidationBuilder())
         ->string()
         ->maxLength(10)
         ->minLength(5)
