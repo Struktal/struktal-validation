@@ -12,7 +12,7 @@ class MaxLength extends GenericValidator implements ValidatorInterface {
         $this->maxLength = $maxLength;
     }
 
-    public static function create(int $maxLength = null): ValidatorInterface {
+    public static function create(int $maxLength = 0): ValidatorInterface {
         return new self($maxLength);
     }
 

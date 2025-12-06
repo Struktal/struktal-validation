@@ -16,7 +16,7 @@ class IsInDatabase extends GenericValidator implements ValidatorInterface {
         $this->additionalFilters = $additionalFilters;
     }
 
-    public static function create(GenericEntityDAO $dao = null, array $additionalFilters = []): ValidatorInterface {
+    public static function create(?GenericEntityDAO $dao = null, array $additionalFilters = []): ValidatorInterface {
         if($dao === null) {
             $dao = GenericEntity::dao();
         }

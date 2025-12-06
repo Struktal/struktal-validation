@@ -12,7 +12,7 @@ class MaxValue extends GenericValidator implements ValidatorInterface {
         $this->maxValue = $maxValue;
     }
 
-    public static function create(int $maxValue = null): ValidatorInterface {
+    public static function create(int $maxValue = PHP_INT_MAX): ValidatorInterface {
         return new self($maxValue);
     }
 

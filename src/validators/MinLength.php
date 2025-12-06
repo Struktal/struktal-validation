@@ -12,7 +12,7 @@ class MinLength extends GenericValidator implements ValidatorInterface {
         $this->minLength = $minLength;
     }
 
-    public static function create(int $minLength = null): ValidatorInterface {
+    public static function create(int $minLength = 0): ValidatorInterface {
         return new self($minLength);
     }
 

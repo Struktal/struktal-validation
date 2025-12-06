@@ -12,7 +12,7 @@ class MinValue extends GenericValidator implements ValidatorInterface {
         $this->minValue = $minValue;
     }
 
-    public static function create(int $minValue = null): ValidatorInterface {
+    public static function create(int $minValue = PHP_INT_MIN): ValidatorInterface {
         return new self($minValue);
     }
 
