@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30b6fbedb178d410fa428effb94c85c4",
+    "content-hash": "c6fc64f67bf315a5d28bc2162f9403b0",
     "packages": [
         {
             "name": "struktal/struktal-orm",
@@ -3893,7 +3893,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.5.0",
+        "php": ">=8",
         "ext-pdo": "*"
     },
     "platform-dev": {},
