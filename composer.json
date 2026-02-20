@@ -16,7 +16,7 @@
     "require": {
         "php": ">=8",
         "ext-pdo": "*",
-        "struktal/struktal-orm": "^2.2.0"
+        "struktal/struktal-orm": "^3.0.0"
     },
     "require-dev": {
         "pestphp/pest": "^v4.2.0"
